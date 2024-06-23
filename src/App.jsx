@@ -3,7 +3,6 @@ import Navbar from "./components/Navbar"
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Signin from "./components/Signin";
 import Signup from "./components/Signup";
-import Cart from "./components/cart";
 import CartContainer from "./components/CartContainer";
 
 function App() {

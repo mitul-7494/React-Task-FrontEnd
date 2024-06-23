@@ -12,7 +12,6 @@ const cartSlice = createSlice({
   
     reducers: {
       getCartTotal: (state, action) => {
-        console.log("incartTotal", state)
         let { totalAmount, totalCount } = state.items.reduce(
           (cartTotal, cartItem) => {
             const { price, quantity } = cartItem;
@@ -29,7 +28,6 @@ const cartSlice = createSlice({
         );
         state.totalAmount = totalAmount;
         state.totalCount = totalCount
-        console.log(totalAmount , " in total", totalCount)
       },
       remove: (state, action) => {
         state.items = state.items.filter((item) => item.id !== action.payload);
@@ -63,7 +61,7 @@ const cartSlice = createSlice({
           state.items[index].quantity += action.payload.quantity;
         } else {
           // If the item is not found, insert the new item
-          array.push(newItem);
+          state.items.push(action.payload);
         }
       },
       setCartItems: (state, action) => {
@@ -79,6 +77,7 @@ const cartSlice = createSlice({
     decrease,
     clearCart,
     setCartItems,
+    addToCart,
   } = cartSlice.actions;
   
   export default cartSlice.reducer;

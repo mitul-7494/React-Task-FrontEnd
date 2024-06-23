@@ -6,8 +6,7 @@ import { useNavigate } from 'react-router-dom';
 
 function Navbar() {
   const navigate = useNavigate();
-  const cart = useSelector((state) => {state.cart})
-  console.log(cart);
+  const {totalCount} = useSelector((state) => state.cart)
 
   const handleSignOut = async (e) => {
     e.preventDefault();
@@ -15,6 +14,7 @@ function Navbar() {
     localStorage.removeItem('username');
     window.location.href = '/signin';
   }
+
   return (
     <nav className="navbar">
       <h1 className="navbar-title">Shopping App</h1>
@@ -22,14 +22,17 @@ function Navbar() {
         {(window.location.href.includes('/signin') || window.location.href.includes('/signup')) ? (
           ""
         ) : <>
-        <a onClick={() => {
-          navigate('/')
-        }} className="navbar-link">Home</a>
-        <a onClick={() => {
-          navigate('/cart')
-        }} className="navbar-link">Cart {cart}</a>
-        <a onClick={handleSignOut} className="navbar-link">Sign Out</a>
-      </>}
+          <a onClick={() => {
+            navigate('/')
+          }} className="navbar-link">Home</a>
+          <div className="cart-container" onClick={() => {
+            navigate('/cart')
+          }}>
+            <a className="navbar-link">Cart</a>
+            {totalCount > 0 && <span className="cart-count">{totalCount}</span>}
+          </div>
+          <a onClick={handleSignOut} className="navbar-link">Sign Out</a>
+        </>}
       </div>
     </nav>
   );

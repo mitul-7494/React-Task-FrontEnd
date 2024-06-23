@@ -62,5 +62,18 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100%;
+    height: 50%;
+  }
+
+  .right-item-cont{
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+  }
+
+  .deleteItem{
+    background-color: #ff6347;
+    cursor: pointer;
+    border: 0px;
+    border-radius: 3px;
   }
