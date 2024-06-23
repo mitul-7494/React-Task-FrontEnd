@@ -1,0 +1,31 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color: #333;
+    height: 4.5rem;
+    color: rgba(255, 255, 255, 0.87);
+  }
+  
+  .navbar-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+  }
+  
+  .navbar-options {
+    display: flex;
+    gap: 1rem;
+  }
+  
+  .navbar-link {
+    color: rgba(255, 255, 255, 0.87);
+    text-decoration: none;
+    font-size: 1rem;
+    transition: color 0.3s;
+  }
+  
+  .navbar-link:hover {
+    color: #1e90ff;
+  }
+  
