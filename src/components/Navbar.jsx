@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './Navbar.css'; // Import the CSS 
 import api from '../utils/UserApi';
 import { useSelector } from 'react-redux';
@@ -14,6 +14,13 @@ function Navbar() {
     localStorage.removeItem('username');
     window.location.href = '/signin';
   }
+
+  useEffect(()=> {
+
+    return () => {
+      localStorage.setItem('isFetched',"false")
+    }
+  }, [])
 
   return (
     <nav className="navbar">

@@ -15,6 +15,7 @@ function App() {
           <Route path="/signin"  element={<><Navbar /><Signin /></>} />
           <Route path="/signup"  element={<><Navbar /><Signup /></>} />
           <Route path="/cart"  element={<><Navbar /><CartContainer/></>} />
+          <Route path="/*" element={<h1> 404 </h1>} />
       </Routes>
       </Router>
     </>

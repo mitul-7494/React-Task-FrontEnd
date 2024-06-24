@@ -20,7 +20,7 @@ const CartContainer = () => {
   const [isButtonDisabled, setIsButtonDisabled] = useState(false); // To disable the button after click
 
   useEffect(() => {
-    if (items.length <= 0) {
+    if (localStorage.getItem('isFetched')==null || localStorage.getItem('isFetched')=="false") {
       try {
         api.get('items/cart').then((response) => {
           if (response) {

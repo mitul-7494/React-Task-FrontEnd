@@ -13,10 +13,11 @@ const Items = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (cartItems.length <= 0) {
+    if (localStorage.getItem('isFetched')==null || localStorage.getItem('isFetched')=="false") {
       try {
         api.get('items/cart').then((response) => {
           if (response) {
+            localStorage.setItem('isFetched', true)
             dispatch(setCartItems({
               data: response.data["cart"]
             }));
