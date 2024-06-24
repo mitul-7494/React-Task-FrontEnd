@@ -69,6 +69,25 @@ const Items = () => {
     }
   }
 
+  const handleSelAddToCart = async () => {
+    if (quantity > 0 && quantity < 11) {
+      try {
+        let payload = { id: selectedItem.id, title: selectedItem.title, username: localStorage.getItem('username'), quantity: quantity, price: selectedItem.price, thumbnail: selectedItem.thumbnail };
+        const response = await api.post('items/cart', payload);
+        if (response) {
+          toast.success("Item added successfully!");
+          dispatch(addToCart(payload));
+          handleClose();
+        } else {
+          toast.error("Item not added successfully");
+        }
+      } catch (error) {
+        console.log("item not added", error);
+        toast.error("something went wrong.");
+      }
+    }
+  }
+
   useEffect(() => {
     getItems().then((res) => {
       setItems(res.data['items']); // Assuming res.data contains the list of items
@@ -142,7 +161,7 @@ const Items = () => {
                     ))}
                   </select>
                 </div>
-                <button className="add-to-cart-button-2" onClick={handleAddToCart} disabled={getMaxQuantity(selectedItem) === 0}>Add to Cart</button>
+                <button className="add-to-cart-button-2" onClick={handleSelAddToCart} disabled={getMaxQuantity(selectedItem) === 0}>Add to Cart</button>
                 {getMaxQuantity(selectedItem) === 0 ? "Already have 10 in cart" : ""}
               </div>
             </div>
