@@ -24,8 +24,8 @@ const CartItem = ({ id, thumbnail, title, price, quantity , dispatch}) => {
   }
 
 
-  const handleDelete = () => {
-    api.put('items/cart', {id, username:localStorage.getItem('username'), quantity:0})
+  const handleDelete =async () => {
+    await api.put('items/cart', {id, username:localStorage.getItem('username'), quantity:0})
     dispatch(remove(id))
   }
   return (

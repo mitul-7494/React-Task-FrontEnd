@@ -142,7 +142,7 @@ const Items = () => {
                     ))}
                   </select>
                 </div>
-                <button className="add-to-cart-button-2" onClick={handleAddToCart} disabled={getMaxQuantity(selectedItem) === 0}>Add to Cart</button>
+                <button className="add-to-cart-button-2" onClick={() => {handleAddToCart(selectedItem,quantity)}} disabled={getMaxQuantity(selectedItem) === 0}>Add to Cart</button>
                 {getMaxQuantity(selectedItem) === 0 ? "Already have 10 in cart" : ""}
               </div>
             </div>
